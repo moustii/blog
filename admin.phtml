@@ -1,0 +1,49 @@
+<main>
+    <section class="table">
+        
+        <?php if(!isset($_SESSION['admin'])): ?>
+      
+        <form action="admin.php" method="post">
+            <fieldset>
+                <legend>Log in</legend>
+                    <label for="">Pseudo</label>
+                    <div>
+                        <input type="text" name="pseudo"/>
+                    </div>
+                    <label for="">Password</label>
+                    <div>
+                        <input type="password" name="password"/>
+                    </div>
+                    <button type="submit">Connexion</button>
+            </fieldset>
+        </form>
+
+        <?php else: ?>
+        
+        <h2><i class="fa-solid fa-screwdriver-wrench"></i>Panneau admin<i class="fa-solid fa-screwdriver-wrench"></i></h2>
+        <p><a href="ajout_article.php">Écrire un nouvel article</a></p>
+        
+        <table>
+             <caption>Articles existants</caption>
+            <tr>
+                <th>Titre</th>
+                <th>Contenu</th>
+                <th>Auteur</th>
+                <th>Catégorie</th>
+            </tr>
+            <?php foreach($articles as $article): ?>
+            <tr>
+                <td><?= $article["titre"]?></td>
+                <td><?= substr($article["contenu"],0,30) ?> [...]</td>
+                <td><?= $article["prenom"]." ".$article["nom"]?></td>
+                <td><?= $article["nom_cat"]?></td> 
+                <td><a href="modif_article.php?id=<?= $article["id"] ?>"><i class="fa-solid fa-pen"></i></a><a href="supp_article.php?id=<?= $article["id"] ?>"><i class="fa-solid fa-xmark"></i></a></td>
+            </tr>    
+            <?php endforeach; ?>
+        </table>
+        
+        <?php endif ?>
+        
+    
+    </section>
+</main>

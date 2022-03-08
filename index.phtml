@@ -1,0 +1,13 @@
+<main>
+        <?php foreach($articles as $article => $value): ?>
+        
+        <article>
+            <h3><a href="article.php?id=<?= $value["id"] ?>"> <?= $value["titre"] ?> </a></h3>
+            <?php if(!empty($value["image"])): ?>
+            <img src="images/<?= $value["image"]?>">
+            <?php endif; ?>
+            <p><?= substr($value["contenu"],0,90) ?> [...]</p>
+            <p class="author">Publié par <?= $value["prenom"]." ".$value["nom"] ?> le <?= $value["date"]  ?></p>
+        </article>
+        <?php endforeach; ?>
+</main>

@@ -1,0 +1,31 @@
+<main>
+        <article>
+            <h3><?= $article["titre"] ?></h3>
+            <p><?= $article["contenu"] ?></p>
+            <p class="author">Publié par <?= $article["prenom"]." ".$article["nom"] ?> le <?= $article["date"]  ?></p>
+        </article>
+        
+        <section class="commentaire">
+            <?php foreach($resultComment as $comment): ?>
+            <p>De <?= $comment["pseudo"]?>, le <?= $comment["date"]?></p>
+            <p><?= $comment["contenu"] ?></p>
+            <?php endforeach ?>
+        </section>
+        
+        <form action="ajout_comment.php" method="post">
+            <fieldset>
+                <legend>✒Nouveau Commentaire</legend>
+                    <label for="">Pseudo</label>
+                <div>
+                    <input type="text" name="pseudo"/>
+                    <input name="id" type="hidden" value="<?= $article["id"] ?>">
+                </div>
+                    <label for="">Commentaire</label>
+                <div>
+                    <textarea name="commentaire"></textarea>
+                </div>
+                <button type="submit">Ajouter</button>
+                <button type="reset">Annuler</button>
+            </fieldset>
+        </form>
+</main>

@@ -1,0 +1,29 @@
+<?php if(isset($_SESSION['admin'])): ?>
+<main>
+    <section class="updateArticle">
+        
+        <form action="modif_article.php" method="post" enctype="multipart/form-data">
+            <fieldset>
+                <legend><i class="fa-solid fa-pen"></i>Article</legend>
+                    <label for="">Titre</label>
+                    <div>
+                        <input type="text" name="titre" value="<?= $article["titre"] ?>"/>
+                    </div>
+                    <label for="">Article</label>
+                    <div>
+                        <textarea name="contenu"><?= $article["contenu"] ?></textarea>
+                    </div>
+                    <div>
+                        <input type="file" name="image"/>
+                    </div>
+                        <input type="hidden" name="idArticle" value="<?= $id ?>"/>
+                    
+                <button type="submit">Modifier</button>
+                <button type="reset">Annuler</button>
+            </fieldset>
+        </form>
+    </section>
+</main>
+<?php else: ?>
+<?php header('location:admin.php') ?>
+<?php endif; ?>

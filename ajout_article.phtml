@@ -1,0 +1,49 @@
+<?php if(isset($_SESSION['admin'])): ?>
+<main>
+    <section class="newArticle">
+        
+        <form action="ajout_article.php" method="post" enctype="multipart/form-data">
+            <fieldset>
+                <legend><i class="fa-solid fa-pen"></i>Nouvel article</legend>
+                    <label for="">Titre</label>
+                    <div>
+                        <input type="text" name="titre"/>
+                    </div>
+                    <label for="">Article</label>
+                    <div>
+                        <textarea name="contenu"></textarea>
+                    </div>
+                    <div>
+                        <input type="file" name="image"/>
+                    </div>
+                    <label for="">Auteur</label>
+                    <div>
+                        <select name="idAuteurs">
+                            <option value="">Choix auteur</option>
+                            <?php foreach($auteurs as $auteur): ?>
+                            <option value="<?=$auteur["id"]?>"><?=$auteur["prenom"]." ".$auteur["nom"] ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                        
+                    </div>
+                    <label for="">Catégorie</label>
+                    <div>
+                        <select name="idCategories">
+                            <option value="">Choix cat</option>
+                            <?php foreach($categories as $categorie): ?>
+                            <option value="<?=$categorie["id"]?>"><?= $categorie["nom_cat"] ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                        
+                        <p style="display: <?= $msgError ?>; color: red">Veuillez renseigner tout les champs </p>
+                        
+                    </div>
+                <button type="submit">Enregistrer</button>
+                <button type="reset">Annuler</button>
+            </fieldset>
+        </form>
+    </section>
+</main>
+<?php else: ?>
+<?php header('location:admin.php') ?>
+<?php endif; ?>

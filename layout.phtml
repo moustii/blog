@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><?= $titre ?></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+<body>
+    <header>
+        <h1>Blog</h1>
+        <ul>
+            <li><a href="index.php">Accueil</a></li>
+            <li><a href="admin.php">Administrateur</a></li>
+            <?php if(isset($_SESSION["admin"])): ?>
+            <li class="logout"><a href="deconnexion.php">Log out</a></li>
+            <?php endif ?>
+            
+        </ul>
+        
+    </header>
+    
+         <!--partie dynamique -->
+    <?php require $template.".phtml"; ?> 
+   
+    
+    
+    
+    <footer>
+        <p>Le blog</p>
+    </footer>
+</body>
+</html>
